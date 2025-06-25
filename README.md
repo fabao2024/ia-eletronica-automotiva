@@ -1,4 +1,3 @@
-
 # IA na Eletrônica Automotiva 🚗🤖
 
 Este projeto é um MVP de uma plataforma baseada em Inteligência Artificial aplicada à eletrônica automotiva. O objetivo é auxiliar mecânicos e técnicos no diagnóstico de falhas complexas utilizando visão computacional, processamento de linguagem natural e aprendizado contínuo com dados reais.
@@ -22,6 +21,7 @@ Este projeto é um MVP de uma plataforma baseada em Inteligência Artificial apl
 ### Pré-requisitos
 - Python 3.8 ou superior
 - Pip
+- Visual Studio Code (Opcional)
 
 ### Passos
 
@@ -38,8 +38,15 @@ source venv/bin/activate  # ou .\venv\Scripts\activate no Windows
 pip install -r requirements.txt
 
 # Execute a aplicação
-streamlit run app/app.py
+streamlit run app.py
 ```
+
+### Executando com o Visual Studio Code
+
+1. Abra a pasta do projeto no Visual Studio Code.
+2. Instale a extensão recomendada para Python.
+3. Abra o painel "Run and Debug" (Ctrl+Shift+D).
+4. Selecione a configuração "Python: Streamlit" e pressione F5 para iniciar.
 
 ## 🧪 Tecnologias Usadas
 
