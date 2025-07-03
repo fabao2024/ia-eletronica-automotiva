@@ -1,3 +1,4 @@
+
 # IA na Eletrônica Automotiva 🚗🤖
 
 Este projeto é um MVP de uma plataforma baseada em Inteligência Artificial aplicada à eletrônica automotiva. O objetivo é auxiliar mecânicos e técnicos no diagnóstico de falhas complexas utilizando visão computacional, processamento de linguagem natural e aprendizado contínuo com dados reais.
