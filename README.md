@@ -1,74 +1,89 @@
+﻿# IA na Eletronica Automotiva
 
-# IA na Eletrônica Automotiva 🚗🤖
+Este projeto e um MVP de uma plataforma de IA aplicada a eletronica automotiva. O foco atual e demonstrar fluxos de diagnostico e interpretacao visual por meio de mockups interativos em Streamlit.
 
-Este projeto é um MVP de uma plataforma baseada em Inteligência Artificial aplicada à eletrônica automotiva. O objetivo é auxiliar mecânicos e técnicos no diagnóstico de falhas complexas utilizando visão computacional, processamento de linguagem natural e aprendizado contínuo com dados reais.
+## Visao Geral
 
-## 🔍 Visão Geral
+- Diagnostico inteligente e guiado por IA
+- Interpretacao de esquemas eletricos
+- Reconhecimento visual de componentes
+- Estrutura para evolucao com integracoes reais
 
-- 🎯 Diagnóstico inteligente e guiado por IA
-- 🧠 Interpretação de esquemas elétricos com GPT + RAG
-- 👁️ Reconhecimento visual de componentes com OpenCV e YOLOv8
-- 🧾 Aprendizado contínuo com mensagens reais de mecânicos via WhatsApp API
+## Funcionalidades do MVP
 
-## 📦 Funcionalidades do MVP
-
-- Upload de imagem de módulo eletrônico
-- Sugestão automatizada de falhas prováveis
-- Simulação do fluxo de perguntas/respostas com IA
+- Upload de imagem de modulo eletronico
+- Sugestao automatizada de falhas provaveis
+- Simulacao do fluxo de perguntas e respostas com IA
 - Interface simples e interativa via Streamlit
 
-## 🛠️ Como Executar
+## Status atual do repositorio
 
-### Pré-requisitos
-- Python 3.8 ou superior
+- Este repositorio e um MVP visual (mockups interativos).
+- O codigo atual usa: `Python`, `Streamlit` e `Pillow`.
+- As imagens em `mockups/` sao geradas automaticamente apenas quando estiverem ausentes.
+
+## Como Executar
+
+### Pre-requisitos
+
+- Python 3.8+
 - Pip
-- Visual Studio Code (Opcional)
+- Visual Studio Code (opcional)
 
 ### Passos
 
 ```bash
-# Clone o repositório (ou baixe)
 git clone https://github.com/fabao2024/ia-eletronica-automotiva.git
 cd ia-eletronica-automotiva
 
-# Crie ambiente virtual
 python -m venv venv
-source venv/bin/activate  # ou .\venv\Scripts\activate no Windows
+# Windows
+.\venv\Scripts\activate
+# Linux/macOS
+source venv/bin/activate
 
-# Instale as dependências
 pip install -r requirements.txt
-
-# Execute a aplicação
 streamlit run app.py
 ```
 
-### Executando com o Visual Studio Code
+### Nota de execucao
 
-1. Abra a pasta do projeto no Visual Studio Code.
-2. Instale a extensão recomendada para Python.
-3. Abra o painel "Run and Debug" (Ctrl+Shift+D).
-4. Selecione a configuração "Python: Streamlit" e pressione F5 para iniciar.
+- O app nao recria os arquivos de `mockups/` em toda interacao.
+- Se algum PNG for removido, ele e gerado novamente na proxima execucao.
 
-## 🧪 Tecnologias Usadas
+### Executando com Visual Studio Code
+
+1. Abra a pasta do projeto no VS Code.
+2. Instale a extensao Python.
+3. Abra "Run and Debug" (`Ctrl+Shift+D`).
+4. Selecione `Python: Streamlit` e pressione `F5`.
+
+## Tecnologias Usadas
+
+### Atualmente no codigo
 
 - Python
 - Streamlit
+- Pillow
+
+### Planejadas para proximas fases
+
 - OpenCV / YOLOv8
 - Tesseract OCR
 - GPT (OpenAI API)
 - MongoDB / PostgreSQL
 
-## 🚀 Próximos Passos
+## Proximos Passos
 
-- Finalizar backend com integração real com APIs
-- Lançar versão beta para oficinas parceiras
+- Finalizar backend com integracao real com APIs
+- Lancar versao beta para oficinas parceiras
 - Incluir base de dados com falhas reais
-- Construção do modelo neural proprietário
+- Evoluir para modelo neural proprietario
 
-## 🤝 Contribua
+## Contribua
 
-Contribuições são bem-vindas! Sinta-se livre para abrir uma issue ou pull request.
+Contribuicoes sao bem-vindas. Abra uma issue ou pull request.
 
-## 📄 Licença
+## Licenca
 
-Este projeto está sob a licença MIT.
+Este projeto esta sob a licenca MIT.
