@@ -4,6 +4,19 @@ import os
 import base64
 from io import BytesIO
 
+MOCKUP_DIR = "mockups"
+MOCKUP_FILES = [
+    "login.png",
+    "vehicle_selection.png",
+    "diagnostic.png",
+    "results.png",
+    "upload.png",
+    "recognition.png",
+    "schematic.png",
+    "dashboard.png",
+    "knowledge.png",
+]
+
 # Configuração da página
 st.set_page_config(
     page_title="Mockups - IA para Eletrônica Automotiva",
@@ -137,7 +150,8 @@ def get_image_base64(img):
 
 # Função para salvar mockup
 def save_mockup(img, filename):
-    filepath = os.path.join("mockups", filename)
+    os.makedirs(MOCKUP_DIR, exist_ok=True)
+    filepath = os.path.join(MOCKUP_DIR, filename)
     img.save(filepath)
     return filepath
 
@@ -355,8 +369,18 @@ def create_all_mockups():
 # Definir dimensões padrão para os mockups
 width, height = 670, 850
 
-# Criar e salvar todos os mockups
-mockups = create_all_mockups()
+# Gerar mockups apenas quando necessÃ¡rio
+@st.cache_resource
+def ensure_mockups_generated():
+    missing_files = [
+        filename
+        for filename in MOCKUP_FILES
+        if not os.path.exists(os.path.join(MOCKUP_DIR, filename))
+    ]
+    if missing_files:
+        create_all_mockups()
+
+ensure_mockups_generated()
 
 # Exibir os mockups no Streamlit
 st.title("Mockups - IA para Eletrônica Automotiva")
