@@ -382,6 +382,131 @@ def ensure_mockups_generated():
 
 ensure_mockups_generated()
 
+language = st.selectbox("Language / Idioma", ["Portuguese", "English"], index=0)
+
+# English rendering branch; the original Portuguese flow stays below.
+if language == "English":
+    st.title("Mockups - AI for Automotive Electronics")
+    st.markdown(
+        """
+## Project Overview
+This project demonstrates an AI-assisted automotive electronics prototype focused on:
+- guided diagnostics,
+- visual interpretation of components and schematics,
+- dashboard and knowledge-base workflows.
+"""
+    )
+
+    tab1, tab2, tab3 = st.tabs(["Guided Diagnosis", "Visual Interpretation", "Dashboard"])
+
+    with tab1:
+        st.header("Guided Diagnosis Flow")
+        st.markdown("### 1. Login Screen")
+        st.image("mockups/login.png")
+        st.markdown("**Description:** Entry point with user identification and access control.")
+
+        st.markdown("### 2. Vehicle Selection")
+        st.image("mockups/vehicle_selection.png")
+        st.markdown("**Description:** Vehicle lookup by make/model/year/engine or chassis code.")
+
+        st.markdown("### 3. Diagnostic Interface")
+        st.image("mockups/diagnostic.png")
+        st.markdown("**Description:** Step-by-step diagnosis with test results and next actions.")
+
+        st.markdown("### 4. Results View")
+        st.image("mockups/results.png")
+        st.markdown("**Description:** Final diagnosis summary and recommended repair path.")
+
+    with tab2:
+        st.header("Visual Interpretation System")
+        st.markdown("### 1. Image Upload/Capture")
+        st.image("mockups/upload.png")
+        st.markdown("**Description:** Upload or capture images of modules, labels, components, or schematics.")
+
+        st.markdown("### 2. Component Recognition")
+        st.image("mockups/recognition.png")
+        st.markdown("**Description:** Component details and related history context.")
+
+        st.markdown("### 3. Electrical Schematics View")
+        st.image("mockups/schematic.png")
+        st.markdown("**Description:** Related schematic with component legend and export options.")
+
+        st.markdown("---")
+        st.subheader("Interactive Upload/Capture Test")
+        st.caption("Functional section to validate image upload in the prototype.")
+
+        image_type = st.selectbox(
+            "Image type",
+            ["ECU Module", "Label", "Component", "Schematic"],
+            index=2,
+            key="image_type_en",
+        )
+
+        col_upload, col_camera = st.columns(2)
+        uploaded_file = None
+        camera_file = None
+
+        with col_upload:
+            uploaded_file = st.file_uploader(
+                "Upload image",
+                type=["png", "jpg", "jpeg", "webp"],
+                help="Upload an image of the component or label.",
+                key="upload_en",
+            )
+
+        with col_camera:
+            enable_camera = st.checkbox(
+                "Enable camera capture",
+                value=False,
+                help="Camera permission is requested only after enabling this option.",
+                key="enable_camera_en",
+            )
+            if enable_camera:
+                camera_file = st.camera_input("Capture with camera", key="camera_en")
+            else:
+                st.caption("Camera is disabled by default. Enable above to capture.")
+
+        selected_image_file = uploaded_file or camera_file
+
+        if selected_image_file is not None:
+            image = Image.open(selected_image_file)
+            st.image(image, caption=f"Received image ({image_type})", use_container_width=True)
+
+            if st.button("Analyze image", type="primary", key="analyze_en"):
+                with st.spinner("Running sample analysis..."):
+                    width_img, height_img = image.size
+                    st.success("Image processed successfully.")
+                    st.write(f"Detected resolution: {width_img}x{height_img}")
+                    st.write(f"Color mode: {image.mode}")
+                    st.info(
+                        "This result is a placeholder. "
+                        "Connect your computer vision model here for real diagnostics."
+                    )
+        else:
+            st.info("Upload an image or enable the camera to run analysis.")
+
+    with tab3:
+        st.header("Dashboard and Knowledge Base")
+        st.markdown("### 1. Main Dashboard")
+        st.image("mockups/dashboard.png")
+        st.markdown("**Description:** Operational overview with diagnostics and usage indicators.")
+
+        st.markdown("### 2. Knowledge Base")
+        st.image("mockups/knowledge.png")
+        st.markdown("**Description:** Technical repository organized by issue type and component.")
+
+    st.markdown(
+        """
+## Implemented Technical Resources
+- **Guided Diagnosis:** intelligent checklist and decision flow
+- **Visual Interpretation:** component/label/schematic recognition path
+- **Knowledge Base:** structure for issue and solution cataloging
+- **Data Integration:** foundation for technical data ingestion
+- **Responsive Interface:** usable across workshop device types
+"""
+    )
+    st.stop()
+
 # Exibir os mockups no Streamlit
 st.title("Mockups - IA para Eletrônica Automotiva")
 
@@ -472,3 +597,57 @@ st.markdown("""
 - **Integração de Dados:** Processamento de mensagens de grupos técnicos e manuais de serviço
 - **Interface Responsiva:** Design adaptável para uso em diferentes dispositivos na oficina
 """)
+
+st.markdown("---")
+st.subheader("Teste Interativo de Upload/Captura")
+st.caption("Sessao funcional para validar envio de imagem no prototipo.")
+
+image_type_pt = st.selectbox(
+    "Tipo de imagem",
+    ["Modulo ECU", "Etiqueta", "Componente", "Esquema"],
+    index=2,
+    key="image_type_pt",
+)
+
+col_upload_pt, col_camera_pt = st.columns(2)
+uploaded_file_pt = None
+camera_file_pt = None
+
+with col_upload_pt:
+    uploaded_file_pt = st.file_uploader(
+        "Carregar imagem",
+        type=["png", "jpg", "jpeg", "webp"],
+        help="Envie uma imagem do componente ou etiqueta.",
+        key="upload_pt",
+    )
+
+with col_camera_pt:
+    enable_camera_pt = st.checkbox(
+        "Ativar captura por camera",
+        value=False,
+        help="A camera so sera solicitada apos ativar esta opcao.",
+        key="enable_camera_pt",
+    )
+    if enable_camera_pt:
+        camera_file_pt = st.camera_input("Capturar com camera", key="camera_pt")
+    else:
+        st.caption("Camera desativada por padrao. Ative acima para capturar.")
+
+selected_image_file_pt = uploaded_file_pt or camera_file_pt
+
+if selected_image_file_pt is not None:
+    image_pt = Image.open(selected_image_file_pt)
+    st.image(image_pt, caption=f"Imagem recebida ({image_type_pt})", use_container_width=True)
+
+    if st.button("Analisar imagem", type="primary", key="analyze_pt"):
+        with st.spinner("Executando analise de exemplo..."):
+            width_img_pt, height_img_pt = image_pt.size
+            st.success("Imagem processada com sucesso.")
+            st.write(f"Resolucao detectada: {width_img_pt}x{height_img_pt}")
+            st.write(f"Modo de cor: {image_pt.mode}")
+            st.info(
+                "Este resultado e um placeholder. "
+                "Conecte aqui seu modelo de visao computacional para diagnostico real."
+            )
+else:
+    st.info("Envie uma imagem ou ative a camera para habilitar a analise.")
