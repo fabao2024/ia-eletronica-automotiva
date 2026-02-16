@@ -1,89 +1,68 @@
-﻿# IA na Eletronica Automotiva
+﻿# Automotive Electronics AI
 
-Este projeto e um MVP de uma plataforma de IA aplicada a eletronica automotiva. O foco atual e demonstrar fluxos de diagnostico e interpretacao visual por meio de mockups interativos em Streamlit.
+This repository is an MVP for an AI-assisted automotive electronics platform.
+The current focus is an interactive Streamlit prototype that demonstrates guided diagnostics and visual-analysis workflows.
 
-## Visao Geral
+## Overview
 
-- Diagnostico inteligente e guiado por IA
-- Interpretacao de esquemas eletricos
-- Reconhecimento visual de componentes
-- Estrutura para evolucao com integracoes reais
+- Guided AI diagnostic flow
+- Visual interpretation workflow for components and schematics
+- Knowledge-base style output and dashboard mockups
+- Architecture ready for future backend and model integrations
 
-## Funcionalidades do MVP
+## Current Repository Scope
 
-- Upload de imagem de modulo eletronico
-- Sugestao automatizada de falhas provaveis
-- Simulacao do fluxo de perguntas e respostas com IA
-- Interface simples e interativa via Streamlit
+- This repository currently delivers a visual MVP (interactive mockups).
+- Runtime stack in code: `Python`, `Streamlit`, and `Pillow`.
+- Mockup PNG files in `mockups/` are generated only when missing.
+- Camera capture is opt-in and requires explicit user action in the UI.
 
-## Status atual do repositorio
+## Run Locally
 
-- Este repositorio e um MVP visual (mockups interativos).
-- O codigo atual usa: `Python`, `Streamlit` e `Pillow`.
-- As imagens em `mockups/` sao geradas automaticamente apenas quando estiverem ausentes.
-
-## Como Executar
-
-### Pre-requisitos
+### Prerequisites
 
 - Python 3.8+
 - Pip
-- Visual Studio Code (opcional)
+- VS Code (optional)
 
-### Passos
+### Setup
 
 ```bash
 git clone https://github.com/fabao2024/ia-eletronica-automotiva.git
 cd ia-eletronica-automotiva
 
-python -m venv venv
+python -m venv .venv
 # Windows
-.\venv\Scripts\activate
+.\\.venv\\Scripts\\activate
 # Linux/macOS
-source venv/bin/activate
+source .venv/bin/activate
 
 pip install -r requirements.txt
 streamlit run app.py
 ```
 
-### Nota de execucao
+### VS Code / Cursor Run
 
-- O app nao recria os arquivos de `mockups/` em toda interacao.
-- Se algum PNG for removido, ele e gerado novamente na proxima execucao.
+1. Open the project folder.
+2. Select the `.venv` interpreter.
+3. Use the `Python: Streamlit` launch profile in Run and Debug (`F5`).
 
-### Executando com Visual Studio Code
+## Documentation
 
-1. Abra a pasta do projeto no VS Code.
-2. Instale a extensao Python.
-3. Abra "Run and Debug" (`Ctrl+Shift+D`).
-4. Selecione `Python: Streamlit` e pressione `F5`.
+- `INSTRUCTIONS.md`: step-by-step local execution and troubleshooting
+- `AGENTS.md`: contributor and workflow guidelines
 
-## Tecnologias Usadas
+## Planned Next Steps
 
-### Atualmente no codigo
+- Add real backend/API integration
+- Add production data pipeline for diagnostics
+- Integrate computer vision and NLP model components
+- Release beta version for partner workshops
 
-- Python
-- Streamlit
-- Pillow
+## Contributing
 
-### Planejadas para proximas fases
+Contributions are welcome. Open an issue or pull request with a clear summary and test evidence.
 
-- OpenCV / YOLOv8
-- Tesseract OCR
-- GPT (OpenAI API)
-- MongoDB / PostgreSQL
+## License
 
-## Proximos Passos
-
-- Finalizar backend com integracao real com APIs
-- Lancar versao beta para oficinas parceiras
-- Incluir base de dados com falhas reais
-- Evoluir para modelo neural proprietario
-
-## Contribua
-
-Contribuicoes sao bem-vindas. Abra uma issue ou pull request.
-
-## Licenca
-
-Este projeto esta sob a licenca MIT.
+This project is licensed under MIT.
