@@ -399,36 +399,44 @@ This project demonstrates an AI-assisted automotive electronics prototype focuse
 
     tab1, tab2, tab3 = st.tabs(["Guided Diagnosis", "Visual Interpretation", "Dashboard"])
 
+    def en_mockup(title, subtitle):
+        elements = [
+            {"type": "text", "position": (20, 90), "content": subtitle, "color": "#333333"},
+            {"type": "rectangle", "position": (20, 130), "width": 630, "height": 620},
+            {"type": "text", "position": (40, 160), "content": "English preview mockup", "color": "#666666"},
+        ]
+        return create_mockup(width, height, title, elements)
+
     with tab1:
         st.header("Guided Diagnosis Flow")
         st.markdown("### 1. Login Screen")
-        st.image("mockups/login.png")
+        st.image(en_mockup("Login", "User authentication and access flow"))
         st.markdown("**Description:** Entry point with user identification and access control.")
 
         st.markdown("### 2. Vehicle Selection")
-        st.image("mockups/vehicle_selection.png")
+        st.image(en_mockup("Vehicle Selection", "Select make, model, year, and engine"))
         st.markdown("**Description:** Vehicle lookup by make/model/year/engine or chassis code.")
 
         st.markdown("### 3. Diagnostic Interface")
-        st.image("mockups/diagnostic.png")
+        st.image(en_mockup("Diagnostic Interface", "Guided checklist and test results"))
         st.markdown("**Description:** Step-by-step diagnosis with test results and next actions.")
 
         st.markdown("### 4. Results View")
-        st.image("mockups/results.png")
+        st.image(en_mockup("Results View", "Diagnosis summary and recommended repair"))
         st.markdown("**Description:** Final diagnosis summary and recommended repair path.")
 
     with tab2:
         st.header("Visual Interpretation System")
         st.markdown("### 1. Image Upload/Capture")
-        st.image("mockups/upload.png")
+        st.image(en_mockup("Image Upload/Capture", "Upload or capture component images"))
         st.markdown("**Description:** Upload or capture images of modules, labels, components, or schematics.")
 
         st.markdown("### 2. Component Recognition")
-        st.image("mockups/recognition.png")
+        st.image(en_mockup("Component Recognition", "Detected component details"))
         st.markdown("**Description:** Component details and related history context.")
 
         st.markdown("### 3. Electrical Schematics View")
-        st.image("mockups/schematic.png")
+        st.image(en_mockup("Electrical Schematics", "Related diagram and legend"))
         st.markdown("**Description:** Related schematic with component legend and export options.")
 
         st.markdown("---")
@@ -488,11 +496,11 @@ This project demonstrates an AI-assisted automotive electronics prototype focuse
     with tab3:
         st.header("Dashboard and Knowledge Base")
         st.markdown("### 1. Main Dashboard")
-        st.image("mockups/dashboard.png")
+        st.image(en_mockup("Main Dashboard", "Usage metrics and diagnosis indicators"))
         st.markdown("**Description:** Operational overview with diagnostics and usage indicators.")
 
         st.markdown("### 2. Knowledge Base")
-        st.image("mockups/knowledge.png")
+        st.image(en_mockup("Knowledge Base", "Solutions and technical references"))
         st.markdown("**Description:** Technical repository organized by issue type and component.")
 
     st.markdown(
