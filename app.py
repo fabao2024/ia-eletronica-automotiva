@@ -366,6 +366,210 @@ def create_all_mockups():
     
     return mockups
 
+
+@st.cache_resource
+def create_all_mockups_en_images():
+    width_en, height_en = 670, 850
+    mockups_en = {}
+
+    # 1. Login Screen
+    login_elements_en = [
+        {"type": "text", "position": (width_en//2-150, 100), "content": "Smart Automotive Diagnosis", "color": "#333333"},
+        {"type": "text", "position": (width_en//2-90, 150), "content": "System Access", "color": "#666666"},
+        {"type": "text", "position": (width_en//2-150, 200), "content": "User:", "color": "#333333"},
+        {"type": "input", "position": (width_en//2-150, 230), "width": 300, "placeholder": "Enter your username"},
+        {"type": "text", "position": (width_en//2-150, 290), "content": "Password:", "color": "#333333"},
+        {"type": "input", "position": (width_en//2-150, 320), "width": 300, "placeholder": "Enter your password"},
+        {"type": "button", "position": (width_en//2-150, 390), "width": 300, "text": "Sign In"},
+        {"type": "text", "position": (width_en//2-100, 450), "content": "Forgot your password?", "color": "#2c7be5"},
+    ]
+    mockups_en["login"] = create_mockup(width_en, height_en, "Login - AI for Automotive Electronics", login_elements_en)
+
+    # 2. Vehicle Selection
+    vehicle_elements_en = [
+        {"type": "text", "position": (20, 80), "content": "Select Vehicle", "color": "#333333"},
+        {"type": "text", "position": (20, 120), "content": "Make:", "color": "#666666"},
+        {"type": "input", "position": (20, 150), "width": 300, "placeholder": "Select make"},
+        {"type": "text", "position": (350, 120), "content": "Model:", "color": "#666666"},
+        {"type": "input", "position": (350, 150), "width": 300, "placeholder": "Select model"},
+        {"type": "text", "position": (20, 210), "content": "Year:", "color": "#666666"},
+        {"type": "input", "position": (20, 240), "width": 300, "placeholder": "Select year"},
+        {"type": "text", "position": (350, 210), "content": "Engine:", "color": "#666666"},
+        {"type": "input", "position": (350, 240), "width": 300, "placeholder": "Select engine"},
+        {"type": "text", "position": (20, 300), "content": "Or enter chassis code:", "color": "#666666"},
+        {"type": "input", "position": (20, 330), "width": 630, "placeholder": "Enter chassis code"},
+        {"type": "button", "position": (530, 390), "width": 120, "text": "Continue"},
+        {"type": "text", "position": (20, 390), "content": "Recent vehicles:", "color": "#333333"},
+        {"type": "card", "position": (20, 430), "width": 200, "height": 100, "title": "Fiat Uno 2019", "content": "1.0 Fire Engine\nLast access: 05/25/2025"},
+        {"type": "card", "position": (240, 430), "width": 200, "height": 100, "title": "VW Gol 2018", "content": "1.6 MSI Engine\nLast access: 05/20/2025"},
+        {"type": "card", "position": (460, 430), "width": 200, "height": 100, "title": "Toyota Corolla 2020", "content": "2.0 Flex Engine\nLast access: 05/15/2025"},
+    ]
+    mockups_en["vehicle_selection"] = create_mockup(width_en, height_en, "Vehicle Selection", vehicle_elements_en)
+
+    # 3. Guided Diagnosis
+    diagnostic_elements_en = [
+        {"type": "text", "position": (20, 80), "content": "Guided Diagnosis - VW Gol 2018 (1.6 MSI Engine)", "color": "#333333"},
+        {"type": "text", "position": (20, 120), "content": "Reported issue: Starting failure", "color": "#666666"},
+        {"type": "text", "position": (20, 160), "content": "Step 1 of 5: Battery check", "color": "#333333"},
+        {"type": "text", "position": (20, 200), "content": "Measure battery voltage with the vehicle turned off:", "color": "#666666"},
+        {"type": "input", "position": (20, 230), "width": 200, "placeholder": "Enter voltage (V)"},
+        {"type": "button", "position": (240, 230), "width": 120, "text": "Confirm"},
+        {"type": "text", "position": (20, 280), "content": "Verification history:", "color": "#333333"},
+        {"type": "rectangle", "position": (20, 310), "width": 630, "height": 150},
+        {"type": "text", "position": (30, 320), "content": "- Battery voltage: 12.3V (Expected: 12.0V - 12.8V)", "color": "#333333"},
+        {"type": "text", "position": (30, 350), "content": "- Battery load test: Passed", "color": "#333333"},
+        {"type": "text", "position": (30, 380), "content": "- Visual cable check: No oxidation", "color": "#333333"},
+        {"type": "text", "position": (30, 410), "content": "- Starter motor test: Pending", "color": "#999999"},
+        {"type": "text", "position": (20, 480), "content": "Recommended next check:", "color": "#333333"},
+        {"type": "card", "position": (20, 510), "width": 630, "height": 80, "title": "Measure voltage at starter terminals during crank attempt",
+         "content": "Connect the multimeter to starter terminals and ask an assistant to crank the engine. Record the voltage."},
+        {"type": "button", "position": (530, 610), "width": 120, "text": "Next Step"},
+        {"type": "button", "position": (390, 610), "width": 120, "text": "Suggest Fix"},
+    ]
+    mockups_en["diagnostic"] = create_mockup(width_en, height_en, "Guided Diagnosis", diagnostic_elements_en)
+
+    # 4. Results View
+    results_elements_en = [
+        {"type": "text", "position": (20, 80), "content": "Diagnostic Results - VW Gol 2018 (1.6 MSI Engine)", "color": "#333333"},
+        {"type": "text", "position": (20, 120), "content": "Identified issue: Starter relay failure", "color": "#2c7be5"},
+        {"type": "text", "position": (20, 160), "content": "Verification summary:", "color": "#333333"},
+        {"type": "rectangle", "position": (20, 190), "width": 630, "height": 180},
+        {"type": "text", "position": (30, 200), "content": "- Battery voltage: 12.3V (Normal)", "color": "#333333"},
+        {"type": "text", "position": (30, 230), "content": "- Battery load test: Passed", "color": "#333333"},
+        {"type": "text", "position": (30, 260), "content": "- Visual cable check: No oxidation", "color": "#333333"},
+        {"type": "text", "position": (30, 290), "content": "- Starter terminal voltage: 0.3V (Below expected: >10V)", "color": "#ff0000"},
+        {"type": "text", "position": (30, 320), "content": "- Starter relay test: Failure detected", "color": "#ff0000"},
+        {"type": "text", "position": (30, 350), "content": "- Harness inspection: No visible damage", "color": "#333333"},
+        {"type": "text", "position": (20, 390), "content": "Recommended solution:", "color": "#333333"},
+        {"type": "card", "position": (20, 420), "width": 630, "height": 100, "title": "Starter relay replacement",
+         "content": "The relay is faulty and not sending enough current to the starter motor.\nLocation: Main fuse box, slot R7. Part number: 5U0 951 253 A"},
+        {"type": "text", "position": (20, 540), "content": "Related electrical schematic:", "color": "#333333"},
+        {"type": "image_placeholder", "position": (20, 570), "width": 630, "height": 200},
+        {"type": "button", "position": (530, 790), "width": 120, "text": "Finish"},
+        {"type": "button", "position": (390, 790), "width": 120, "text": "Print"},
+    ]
+    mockups_en["results"] = create_mockup(width_en, height_en, "Diagnostic Results", results_elements_en)
+
+    # 5. Upload/Capture
+    upload_elements_en = [
+        {"type": "text", "position": (20, 80), "content": "Visual Interpretation - VW Gol 2018", "color": "#333333"},
+        {"type": "text", "position": (20, 120), "content": "Select image type:", "color": "#666666"},
+        {"type": "button", "position": (20, 150), "width": 150, "text": "ECU Module"},
+        {"type": "button", "position": (190, 150), "width": 150, "text": "Label"},
+        {"type": "button", "position": (360, 150), "width": 150, "text": "Component"},
+        {"type": "button", "position": (530, 150), "width": 150, "text": "Schematic"},
+        {"type": "text", "position": (20, 210), "content": "Upload or capture image:", "color": "#333333"},
+        {"type": "rectangle", "position": (20, 240), "width": 630, "height": 300},
+        {"type": "image_placeholder", "position": (235, 290), "width": 200, "height": 200},
+        {"type": "button", "position": (20, 560), "width": 200, "text": "Upload Image"},
+        {"type": "button", "position": (240, 560), "width": 200, "text": "Use Camera"},
+        {"type": "button", "position": (460, 560), "width": 190, "text": "Analyze Image"},
+        {"type": "text", "position": (20, 610), "content": "Tips:", "color": "#333333"},
+        {"type": "text", "position": (20, 640), "content": "- Make sure the image is well-lit and in focus", "color": "#666666"},
+        {"type": "text", "position": (20, 670), "content": "- Avoid reflections and shadows on the component", "color": "#666666"},
+        {"type": "text", "position": (20, 700), "content": "- For labels, get close while keeping text readable", "color": "#666666"},
+    ]
+    mockups_en["upload"] = create_mockup(width_en, height_en, "Image Upload/Capture", upload_elements_en)
+
+    # 6. Component Recognition
+    recognition_elements_en = [
+        {"type": "text", "position": (20, 80), "content": "Component Recognition - ECU Module", "color": "#333333"},
+        {"type": "text", "position": (20, 120), "content": "Identified components:", "color": "#666666"},
+        {"type": "image_placeholder", "position": (20, 150), "width": 300, "height": 300},
+        {"type": "rectangle", "position": (340, 150), "width": 310, "height": 300},
+        {"type": "text", "position": (350, 160), "content": "Component Information", "color": "#333333"},
+        {"type": "text", "position": (350, 190), "content": "Type: Engine Control Unit (ECU)", "color": "#666666"},
+        {"type": "text", "position": (350, 220), "content": "Manufacturer: Bosch", "color": "#666666"},
+        {"type": "text", "position": (350, 250), "content": "Serial Number: 032 906 032 BF", "color": "#666666"},
+        {"type": "text", "position": (350, 280), "content": "Application: VW Gol 1.6 MSI (2017-2019)", "color": "#666666"},
+        {"type": "text", "position": (350, 310), "content": "Compatibility: Original", "color": "#666666"},
+        {"type": "text", "position": (350, 340), "content": "Status: Component successfully identified", "color": "#2c7be5"},
+        {"type": "button", "position": (350, 380), "width": 300, "text": "View Electrical Schematic"},
+        {"type": "text", "position": (20, 470), "content": "Diagnostic history for this component:", "color": "#333333"},
+        {"type": "card", "position": (20, 500), "width": 300, "height": 80, "title": "Fault P0120",
+         "content": "Throttle position sensor - Open circuit\nFrequency: High (23 recorded cases)"},
+        {"type": "card", "position": (340, 500), "width": 300, "height": 80, "title": "Fault P0322",
+         "content": "Engine speed sensor - No signal\nFrequency: Medium (12 recorded cases)"},
+        {"type": "card", "position": (20, 600), "width": 300, "height": 80, "title": "Fault P0505",
+         "content": "Idle control system\nFrequency: Low (5 recorded cases)"},
+        {"type": "card", "position": (340, 600), "width": 300, "height": 80, "title": "Fault P0130",
+         "content": "Oxygen sensor - Circuit malfunction\nFrequency: Low (3 recorded cases)"},
+        {"type": "button", "position": (530, 700), "width": 120, "text": "Export Data"},
+    ]
+    mockups_en["recognition"] = create_mockup(width_en, height_en, "Component Recognition", recognition_elements_en)
+
+    # 7. Electrical Schematic
+    schematic_elements_en = [
+        {"type": "text", "position": (20, 80), "content": "Electrical Schematic - VW Gol 1.6 MSI ECU Module", "color": "#333333"},
+        {"type": "image_placeholder", "position": (20, 120), "width": 630, "height": 400},
+        {"type": "text", "position": (20, 540), "content": "Component Legend:", "color": "#333333"},
+        {"type": "text", "position": (20, 570), "content": "1. ECU Module (032 906 032 BF)", "color": "#666666"},
+        {"type": "text", "position": (20, 600), "content": "2. Throttle position sensor (G79)", "color": "#666666"},
+        {"type": "text", "position": (20, 630), "content": "3. Engine speed sensor (G28)", "color": "#666666"},
+        {"type": "text", "position": (20, 660), "content": "4. Pre-catalyst oxygen sensor (G39)", "color": "#666666"},
+        {"type": "text", "position": (350, 570), "content": "5. EGR valve (N18)", "color": "#666666"},
+        {"type": "text", "position": (350, 600), "content": "6. Ignition coil (N70)", "color": "#666666"},
+        {"type": "text", "position": (350, 630), "content": "7. Fuel injectors (N30-N33)", "color": "#666666"},
+        {"type": "text", "position": (350, 660), "content": "8. Fuel pump relay (J17)", "color": "#666666"},
+        {"type": "button", "position": (20, 700), "width": 150, "text": "Zoom"},
+        {"type": "button", "position": (190, 700), "width": 150, "text": "Print"},
+        {"type": "button", "position": (360, 700), "width": 150, "text": "Save PDF"},
+        {"type": "button", "position": (530, 700), "width": 120, "text": "Back"},
+    ]
+    mockups_en["schematic"] = create_mockup(width_en, height_en, "Electrical Schematic", schematic_elements_en)
+
+    # 8. Dashboard
+    dashboard_elements_en = [
+        {"type": "text", "position": (20, 80), "content": "Dashboard - Overview", "color": "#333333"},
+        {"type": "card", "position": (20, 120), "width": 200, "height": 100, "title": "Completed Diagnoses", "content": "Total: 157\nThis month: 23\nToday: 3"},
+        {"type": "card", "position": (240, 120), "width": 200, "height": 100, "title": "Success Rate", "content": "Overall: 92%\nThis month: 95%\nComponents: 89%"},
+        {"type": "card", "position": (460, 120), "width": 200, "height": 100, "title": "Average Time", "content": "Diagnosis: 12 min\nInterpretation: 3 min\nTotal: 15 min"},
+        {"type": "text", "position": (20, 240), "content": "Recent Diagnoses:", "color": "#333333"},
+        {"type": "rectangle", "position": (20, 270), "width": 630, "height": 150},
+        {"type": "text", "position": (30, 280), "content": "Date       | Vehicle           | Issue                    | Fix                      | Mechanic", "color": "#333333"},
+        {"type": "text", "position": (30, 310), "content": "05/28/2025 | VW Gol 2018      | Starting failure         | Relay replacement        | Carlos Silva", "color": "#333333"},
+        {"type": "text", "position": (30, 340), "content": "05/27/2025 | Fiat Uno 2019    | Check engine light       | MAP sensor replaced      | Maria Oliveira", "color": "#333333"},
+        {"type": "text", "position": (30, 370), "content": "05/27/2025 | Toyota Corolla 20| High fuel consumption    | Injector cleaning        | Joao Pereira", "color": "#333333"},
+        {"type": "text", "position": (30, 400), "content": "05/26/2025 | Honda Civic 2021 | AC not cooling           | Refrigerant refill       | Carlos Silva", "color": "#333333"},
+        {"type": "text", "position": (20, 440), "content": "Most Frequent Issues:", "color": "#333333"},
+        {"type": "image_placeholder", "position": (20, 470), "width": 300, "height": 200},
+        {"type": "text", "position": (340, 440), "content": "Most Replaced Components:", "color": "#333333"},
+        {"type": "image_placeholder", "position": (340, 470), "width": 300, "height": 200},
+        {"type": "text", "position": (20, 690), "content": "Knowledge Base:", "color": "#333333"},
+        {"type": "button", "position": (200, 690), "width": 150, "text": "Access"},
+        {"type": "text", "position": (370, 690), "content": "Reports:", "color": "#333333"},
+        {"type": "button", "position": (470, 690), "width": 180, "text": "Generate Report"},
+    ]
+    mockups_en["dashboard"] = create_mockup(width_en, height_en, "Main Dashboard", dashboard_elements_en)
+
+    # 9. Knowledge Base
+    knowledge_elements_en = [
+        {"type": "text", "position": (20, 80), "content": "Knowledge Base", "color": "#333333"},
+        {"type": "text", "position": (20, 120), "content": "Search:", "color": "#666666"},
+        {"type": "input", "position": (100, 120), "width": 450, "placeholder": "Type issue, component, or vehicle model"},
+        {"type": "button", "position": (570, 120), "width": 80, "text": "Search"},
+        {"type": "text", "position": (20, 170), "content": "Filter by:", "color": "#666666"},
+        {"type": "button", "position": (100, 170), "width": 100, "text": "All"},
+        {"type": "button", "position": (210, 170), "width": 100, "text": "Electrical"},
+        {"type": "button", "position": (320, 170), "width": 100, "text": "Mechanical"},
+        {"type": "button", "position": (430, 170), "width": 100, "text": "Sensors"},
+        {"type": "button", "position": (540, 170), "width": 110, "text": "Injection"},
+        {"type": "text", "position": (20, 220), "content": "Popular Solutions:", "color": "#333333"},
+        {"type": "card", "position": (20, 250), "width": 630, "height": 100, "title": "Fault P0120 - Throttle position sensor",
+         "content": "Symptoms: Rough idle, unstable acceleration, check-engine light on.\nSolution: Check TPS connector, measure resistance (0.5-4.5 kOhm), replace if needed."},
+        {"type": "card", "position": (20, 370), "width": 630, "height": 100, "title": "Starting Failure - Starter Relay",
+         "content": "Symptoms: Starter does not crank, no start noise, dashboard lights normal.\nSolution: Measure starter terminal voltage, check relay in fuse box, replace relay."},
+        {"type": "card", "position": (20, 490), "width": 630, "height": 100, "title": "AC Without Cooling",
+         "content": "Symptoms: Blower works but air is not cold, compressor does not engage.\nSolution: Check refrigerant pressure, pressure sensor, compressor relay and clutch."},
+        {"type": "text", "position": (20, 610), "content": "Contribute Knowledge:", "color": "#333333"},
+        {"type": "button", "position": (250, 610), "width": 200, "text": "Add New Solution"},
+        {"type": "text", "position": (20, 660), "content": "Knowledge Base Stats:", "color": "#666666"},
+        {"type": "text", "position": (20, 690), "content": "Total solutions: 1,247 | Contributions this month: 37 | Verified solutions: 89%", "color": "#666666"},
+    ]
+    mockups_en["knowledge"] = create_mockup(width_en, height_en, "Knowledge Base", knowledge_elements_en)
+
+    return mockups_en
+
 # Definir dimensões padrão para os mockups
 width, height = 670, 850
 
@@ -397,46 +601,39 @@ This project demonstrates an AI-assisted automotive electronics prototype focuse
 """
     )
 
+    en_mockups = create_all_mockups_en_images()
     tab1, tab2, tab3 = st.tabs(["Guided Diagnosis", "Visual Interpretation", "Dashboard"])
-
-    def en_mockup(title, subtitle):
-        elements = [
-            {"type": "text", "position": (20, 90), "content": subtitle, "color": "#333333"},
-            {"type": "rectangle", "position": (20, 130), "width": 630, "height": 620},
-            {"type": "text", "position": (40, 160), "content": "English preview mockup", "color": "#666666"},
-        ]
-        return create_mockup(width, height, title, elements)
 
     with tab1:
         st.header("Guided Diagnosis Flow")
         st.markdown("### 1. Login Screen")
-        st.image(en_mockup("Login", "User authentication and access flow"))
+        st.image(en_mockups["login"])
         st.markdown("**Description:** Entry point with user identification and access control.")
 
         st.markdown("### 2. Vehicle Selection")
-        st.image(en_mockup("Vehicle Selection", "Select make, model, year, and engine"))
+        st.image(en_mockups["vehicle_selection"])
         st.markdown("**Description:** Vehicle lookup by make/model/year/engine or chassis code.")
 
         st.markdown("### 3. Diagnostic Interface")
-        st.image(en_mockup("Diagnostic Interface", "Guided checklist and test results"))
+        st.image(en_mockups["diagnostic"])
         st.markdown("**Description:** Step-by-step diagnosis with test results and next actions.")
 
         st.markdown("### 4. Results View")
-        st.image(en_mockup("Results View", "Diagnosis summary and recommended repair"))
+        st.image(en_mockups["results"])
         st.markdown("**Description:** Final diagnosis summary and recommended repair path.")
 
     with tab2:
         st.header("Visual Interpretation System")
         st.markdown("### 1. Image Upload/Capture")
-        st.image(en_mockup("Image Upload/Capture", "Upload or capture component images"))
+        st.image(en_mockups["upload"])
         st.markdown("**Description:** Upload or capture images of modules, labels, components, or schematics.")
 
         st.markdown("### 2. Component Recognition")
-        st.image(en_mockup("Component Recognition", "Detected component details"))
+        st.image(en_mockups["recognition"])
         st.markdown("**Description:** Component details and related history context.")
 
         st.markdown("### 3. Electrical Schematics View")
-        st.image(en_mockup("Electrical Schematics", "Related diagram and legend"))
+        st.image(en_mockups["schematic"])
         st.markdown("**Description:** Related schematic with component legend and export options.")
 
         st.markdown("---")
@@ -496,11 +693,11 @@ This project demonstrates an AI-assisted automotive electronics prototype focuse
     with tab3:
         st.header("Dashboard and Knowledge Base")
         st.markdown("### 1. Main Dashboard")
-        st.image(en_mockup("Main Dashboard", "Usage metrics and diagnosis indicators"))
+        st.image(en_mockups["dashboard"])
         st.markdown("**Description:** Operational overview with diagnostics and usage indicators.")
 
         st.markdown("### 2. Knowledge Base")
-        st.image(en_mockup("Knowledge Base", "Solutions and technical references"))
+        st.image(en_mockups["knowledge"])
         st.markdown("**Description:** Technical repository organized by issue type and component.")
 
     st.markdown(
